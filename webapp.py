@@ -5,6 +5,7 @@ from attendance import findencodings, markattendance
 import face_recognition
 import os
 import numpy as np 
+from attendance_mongo import markAttendance
 
 
 cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
@@ -50,7 +51,7 @@ while run:
 			cv2.rectangle(frame, (x1,y1), (x2,y2), (255,255,0),3)
 			cv2.rectangle(frame, (x1,y2-35), (x2,y2), (255,255,0),3)	
 			cv2.putText(frame, name, (x1+6,y2-6), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0),3)
-			markattendance(name)
+			markAttendance(name)
 	FRAME_WINDOW.image(frame)
 else:
 	st.write('Stopped')
